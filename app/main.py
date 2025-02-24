@@ -1,43 +1,29 @@
+import os
+from dotenv import load_dotenv
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from app.routes import chatbot
 
-# Initialize FastAPI app
-app = FastAPI(
-    title="Scidyllics Backend",
-    description="API for Scidyllics project",
-    version="1.0.0",
-)
+# ✅ Force load the .env file
+dotenv_path = os.path.join(os.path.dirname(__file__), "../.env")
+load_dotenv(dotenv_path)
 
-# CORS settings (Update origins if needed)
+# ✅ Debugging: Print API key (Remove in production)
+print("🔹 OPENAI_API_KEY:", os.getenv("OPENAI_API_KEY"))
+
+app = FastAPI()
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Change this to specific frontend URLs for security
+    allow_origins=["http://localhost:3000"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
+app.include_router(chatbot.router, prefix="/api", tags=["Chatbot"])
 
-# Root endpoint
+
 @app.get("/")
 def home():
     return {"message": "Welcome to Scidyllics Backend 🚀"}
-
-
-# Include API routes (to be added later)
-# from app.routes import users, auth, items
-# app.include_router(users.router, prefix="/users", tags=["Users"])
-# app.include_router(auth.router, prefix="/auth", tags=["Authentication"])
-
-
-# Health check endpoint
-@app.get("/health")
-def health_check():
-    return {"status": "ok"}
-
-
-# Run the app (only for local development, use `uvicorn` in production)
-if __name__ == "__main__":
-    import uvicorn
-
-    uvicorn.run(app, host="0.0.0.0", port=8000, reload=True)
