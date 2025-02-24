@@ -8,9 +8,6 @@ from app.routes import chatbot
 dotenv_path = os.path.join(os.path.dirname(__file__), "../.env")
 load_dotenv(dotenv_path)
 
-# ✅ Debugging: Print API key (Remove in production)
-print("🔹 OPENAI_API_KEY:", os.getenv("OPENAI_API_KEY"))
-
 app = FastAPI()
 
 app.add_middleware(
