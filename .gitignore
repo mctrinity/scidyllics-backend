@@ -1,0 +1,81 @@
+# Byte-compiled / Cached files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environment
+venv/
+.env/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Environment variables & secrets
+.env
+*.env
+.env.local
+.env.*.backup
+secrets.json
+
+# Logs & Debugging
+logs/
+*.log
+debug.log
+nohup.out
+
+# Database & Migrations
+*.sqlite3
+db.sqlite3
+migrations/
+alembic/versions/
+alembic.ini
+
+# Pytest & Coverage
+htmlcov/
+.coverage
+.tox/
+.nox/
+.pytest_cache/
+pytest-debug.log
+
+# Jupyter Notebooks
+.ipynb_checkpoints
+
+# MyPy
+.mypy_cache/
+.dmypy.json
+
+# VS Code & JetBrains IDE settings
+.vscode/
+.idea/
+*.iml
+
+# MacOS & Windows system files
+.DS_Store
+Thumbs.db
+
+# Docker & Build
+docker-compose.override.yml
+*.dockerfile
+*.tar
+*.log
+*.bak
+build/
+dist/
+*.egg-info/
+.cache/
+
+# Poetry & PIP
+.poetry/
+poetry.lock
+
+# Node.js (if frontend is included)
+node_modules/
+
+# AWS / Terraform / Cloud
+.terraform/
+*.tfstate
+.terraform.lock.hcl
+
+# Other generated files
+*.swp
